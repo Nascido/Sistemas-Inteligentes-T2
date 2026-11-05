@@ -1,0 +1,30 @@
+# Python e ambientes locais
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
+# Dados reproduzíveis e artefatos de treinamento
+dados/fashion-mnist/
+resultados/*
+!resultados/.gitkeep
+modelos/*
+!modelos/.gitkeep
+logs/
+tuner_results*/
+*.keras
+*.h5
+*.hdf5
+*.tfevents.*
+
+# Configurações pessoais e credenciais
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# As saídas do notebook devem ser mantidas: são parte da entrega.

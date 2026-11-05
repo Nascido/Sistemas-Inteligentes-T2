@@ -1,0 +1,13 @@
+# Alternativa para execução local; o Docker existente já inclui estes pacotes,
+# exceto keras-tuner, que pode ser instalado ao iniciar a etapa de otimização.
+jupyterlab
+ipykernel
+nbformat
+nbclient
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+keras-tuner
