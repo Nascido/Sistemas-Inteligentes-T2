@@ -1,5 +1,5 @@
-# Alternativa para execução local; o Docker existente já inclui estes pacotes,
-# exceto keras-tuner, que pode ser instalado ao iniciar a etapa de otimização.
+# Alternativa para execução local. As dependências adicionais da imagem Docker
+# são definidas em ../../requirements.txt.
 jupyterlab
 ipykernel
 nbformat
@@ -11,3 +11,4 @@ seaborn
 scikit-learn
 tensorflow
 keras-tuner
+tensorboard

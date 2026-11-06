@@ -35,8 +35,9 @@ python -m jupyter lab
 Os quatro arquivos do dataset ficam em `dados/fashion-mnist/` e são conferidos por
 MD5. A pasta de dados, os modelos e os resultados externos são ignorados pelo Git.
 **Mantenha as saídas das células no notebook para a entrega.**
-O Keras Tuner consta das dependências locais; no Docker, antes da etapa 3,
-instale-o em uma célula com `%pip install keras-tuner` caso necessário.
+Keras Tuner e TensorBoard constam das dependências locais e do `requirements.txt` do Docker.
+Para atualizar a imagem existente, reconstrua com o comando Docker acima.
+A aula 23 também permite instalar no kernel atual com `%pip install keras-tuner tensorboard`.
 
 ## Organização
 
