@@ -8,34 +8,70 @@ em grupo de 2 a 3 estudantes, conforme o enunciado local.
 
 ## Começar
 
-Se esta pasta estiver no checkout da disciplina, o ambiente Docker/Jupyter
-está configurado em `../../`:
+Com o Docker Desktop aberto, execute na raiz deste repositório:
 
 ```bash
-docker compose -f ../../docker-compose.yml up -d --build
+docker compose up -d --build
 ```
 
-Abra <http://localhost:8888/lab>, entre em `Trabalho 02` e execute
-`Trabalho_02_Redes_Neurais.ipynb` de cima para baixo.
+Na primeira execução, aguarde o download da imagem e a instalação das dependências.
+Abra <http://localhost:8888/lab> e abra `Trabalho_02_Redes_Neurais.ipynb`,
+que aparece diretamente na pasta inicial. Para executar o trabalho, rode as células
+de cima para baixo.
 O notebook inicial prepara o ambiente, verifica/baixa os dados, mostra exemplos e
 cria a divisão treino/validação. As etapas de modelos e análises estão indicadas
 para desenvolvimento pela equipe; nenhum treinamento foi realizado.
 
-Para usar um ambiente Python local, inclusive ao clonar apenas este repositório,
-execute a partir desta pasta:
+### Acompanhar as alterações no notebook
+
+A pasta do repositório é compartilhada diretamente com o contêiner, sem cópias.
+O Jupyter Collaboration verifica alterações no disco a cada segundo e atualiza
+o notebook aberto quando uma nova versão é salva externamente. Esse comportamento
+segue a [configuração de alterações externas do Jupyter Collaboration](https://jupyterlab-realtime-collaboration.readthedocs.io/en/latest/configuration.html#files-changed-on-disk).
+
+Deixe o notebook aberto ao lado do chat para acompanhar as alterações salvas.
+Enquanto ele estiver sendo editado externamente, use a tela apenas para acompanhar:
+alterações externas substituem o conteúdo da sessão aberta. Combine uma pausa nas
+edições externas antes de editar ou executar células pela interface.
+Salvar código não executa as células; os resultados aparecem quando a execução
+é realizada e suas saídas são salvas ou produzidas na interface do Jupyter.
+
+### Gerenciar o ambiente
+
+Para acompanhar a inicialização ou investigar um problema:
+
+```bash
+docker compose logs -f jupyter
+```
+
+Para parar, preservando os arquivos do trabalho:
+
+```bash
+docker compose down
+```
+
+Nas próximas vezes, use `docker compose up -d`. Se mudar `requirements.txt` ou
+o `Dockerfile`, execute novamente `docker compose up -d --build`.
+O serviço fica acessível somente neste computador, sem token ou senha, como no
+ambiente do Trabalho 1. Se a porta 8888 estiver ocupada pelo Jupyter do Trabalho 1,
+pare aquele ambiente antes de iniciar este.
+
+### Alternativa sem Docker
+
+Para usar um ambiente Python local, execute a partir desta pasta:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 python scripts/baixar_dados.py
-python -m jupyter lab
+python -m jupyter lab --YDocExtension.file_poll_interval=1
 ```
 
 Os quatro arquivos do dataset ficam em `dados/fashion-mnist/` e são conferidos por
 MD5. A pasta de dados, os modelos e os resultados externos são ignorados pelo Git.
 **Mantenha as saídas das células no notebook para a entrega.**
-Keras Tuner e TensorBoard constam das dependências locais e do `requirements.txt` do Docker.
+Keras Tuner e TensorBoard constam do mesmo `requirements.txt` usado no Docker e localmente.
 Para atualizar a imagem existente, reconstrua com o comando Docker acima.
 A aula 23 também permite instalar no kernel atual com `%pip install keras-tuner tensorboard`.
 
@@ -50,7 +86,9 @@ dados/                              Origem, licença e dataset local
 scripts/baixar_dados.py              Download e verificação reproduzíveis
 modelos/                            Modelos gerados (ignorados)
 resultados/                         Tabelas e figuras geradas (ignoradas)
-requirements.txt                    Dependências para ambiente local
+Dockerfile                         Imagem Jupyter com as dependências do trabalho
+docker-compose.yml                 Inicialização e compartilhamento do repositório
+requirements.txt                    Dependências para Docker e ambiente local
 ```
 
 Os materiais fornecidos foram preservados com os nomes e a autoria originais.

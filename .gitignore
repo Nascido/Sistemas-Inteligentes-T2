@@ -4,6 +4,8 @@ __pycache__/
 .venv/
 venv/
 .ipynb_checkpoints/
+.jupyter/
+.jupyter_ystore.db*
 .pytest_cache/
 .ruff_cache/
 

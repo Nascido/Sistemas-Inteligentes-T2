@@ -1,6 +1,6 @@
-# Alternativa para execução local. As dependências adicionais da imagem Docker
-# são definidas em ../../requirements.txt.
+# Dependências usadas tanto no Docker quanto na execução local.
 jupyterlab
+jupyter-collaboration
 ipykernel
 nbformat
 nbclient
