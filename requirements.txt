@@ -1,6 +1,6 @@
-# Alternativa para execução local; o Docker existente já inclui estes pacotes,
-# exceto keras-tuner, que pode ser instalado ao iniciar a etapa de otimização.
+# Dependências usadas tanto no Docker quanto na execução local.
 jupyterlab
+jupyter-collaboration
 ipykernel
 nbformat
 nbclient
@@ -11,3 +11,4 @@ seaborn
 scikit-learn
 tensorflow
 keras-tuner
+tensorboard

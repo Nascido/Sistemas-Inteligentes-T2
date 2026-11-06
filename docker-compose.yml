@@ -1,0 +1,23 @@
+name: sistemas-inteligentes-t2
+
+services:
+  jupyter:
+    build: .
+    image: sistemas-inteligentes-t2-jupyter:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8888:8888"
+    volumes:
+      # O Jupyter abre os mesmos arquivos editados neste repositório.
+      - .:/home/jovyan/work:Z
+    command:
+      - start-notebook.py
+      - --ServerApp.ip=0.0.0.0
+      - --ServerApp.port=8888
+      - --ServerApp.root_dir=/home/jovyan/work
+      - --IdentityProvider.token=
+      - --PasswordIdentityProvider.hashed_password=
+      # Detectar alterações externas e atualizar o notebook aberto.
+      - --YDocExtension.file_poll_interval=1
+    security_opt:
+      - no-new-privileges:true
