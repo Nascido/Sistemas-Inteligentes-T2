@@ -8,6 +8,7 @@ venv/
 .jupyter_ystore.db*
 .pytest_cache/
 .ruff_cache/
+.syncthing*
 
 # Dados reproduzíveis e artefatos de treinamento
 dados/fashion-mnist/
