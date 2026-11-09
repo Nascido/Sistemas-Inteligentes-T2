@@ -1,5 +1,10 @@
 # Item 2 — CNN com aumento de dados
 
+> **Sobre os resultados:** os valores e análises numéricas deste guia registram
+> a execução inicial usada para documentar o código. O notebook da equipe foi
+> executado novamente na finalização; consulte suas saídas e análises para os
+> resultados da execução final. A semente não garante valores idênticos entre execuções.
+
 Este documento acompanha a seção 5 do
 [notebook da equipe](../Trabalho_02_Redes_Neurais.ipynb). Ele explica a construção,
 o treinamento e a análise de uma CNN para classificar as dez classes de roupas do

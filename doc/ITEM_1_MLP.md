@@ -1,5 +1,10 @@
 # Item 1 — Implementação, treinamento e análise da MLP
 
+> **Sobre os resultados:** os valores e análises numéricas deste guia registram
+> a execução inicial usada para documentar o código. O notebook da equipe foi
+> executado novamente na finalização; consulte suas saídas e análises para os
+> resultados da execução final. A semente não garante valores idênticos entre execuções.
+
 Este documento explica a implementação do item 1 do Trabalho 02 de Sistemas
 Inteligentes: classificação de imagens do Fashion-MNIST com uma rede MLP, sem
 camadas convolucionais. Ele acompanha o código da seção 4 do

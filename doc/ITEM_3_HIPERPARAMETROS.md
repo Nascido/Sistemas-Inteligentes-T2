@@ -1,5 +1,41 @@
 # Item 3 — Experimentação e otimização de hiperparâmetros da CNN
 
+## Rodada adicional: profundidade e regularização (seção 5.2)
+
+O notebook agora inclui uma rodada **preparada, ainda não executada**, baseada na
+construção com `Sequential`, `hp.Choice` e `RandomSearch` da aula 23. O primeiro
+experimento compara **2, 3 e 4 convoluções**, com três tentativas de **20 épocas**.
+Os demais parâmetros ficam fixos: filtros 8/32 nas duas primeiras convoluções,
+32 filtros nas extras, 64 neurônios densos, Dropout 0,3 e taxa de aprendizagem 0,001.
+
+As convoluções 3 × 3 reduzem cada dimensão em dois pixels. Após o único pooling
+2 × 2, os mapas têm 12 × 12, 11 × 11 ou 10 × 10 pixels, respectivamente.
+As três profundidades cabem nas entradas 28 × 28. Como a entrada de `Flatten`
+também muda, uma rede com mais convoluções pode ter menos parâmetros na camada
+densa; a comparação precisa reconhecer essa mudança junto com a profundidade.
+
+Para uma rodada posterior, fixe a profundidade em `[3]` e teste Dropout com
+`[0.1, 0.3, 0.5]`, ou mantenha o Dropout fixo e varie os neurônios em
+`[32, 64, 128]`. Escolha outro `NOME_NOVA_BUSCA` a cada mudança. Não variar várias
+listas simultaneamente facilita explicar as diferenças, sem eliminar a
+variabilidade de uma execução por combinação.
+
+Execute os passos 1 a 5 da seção 5.2 em ordem. Após reiniciar o kernel, execute
+primeiro as seções 1 a 3 para recriar os dados; os arquivos de comparação da CNN
+e da busca iniciais devem continuar disponíveis. A nova tabela, os checkpoints e
+a comparação de validação ficam em `resultados/buscas_cnn/<NOME_NOVA_BUSCA>/`.
+O novo modelo fica em `modelos/<NOME_NOVA_BUSCA>.keras`, sem substituir o anterior.
+
+A seleção usa somente a validação. O teste de 85,80% já salvo é um registro da
+primeira busca e não deve orientar a escolha das novas configurações. Antes de
+fechar novamente a entrega, executar a rodada, preencher a análise e atualizar
+a seleção e sua avaliação final. O restante deste guia registra a primeira busca.
+
+> **Sobre os resultados:** os valores e análises numéricas deste guia registram
+> a execução inicial usada para documentar o código. O notebook da equipe foi
+> executado novamente na finalização; consulte suas saídas e análises para os
+> resultados da execução final. A semente não garante valores idênticos entre execuções.
+
 Este documento explica a seção **5.1. Experimentação e otimização da CNN** do
 [notebook da equipe](../Trabalho_02_Redes_Neurais.ipynb). Além do procedimento e
 dos resultados, ele descreve como a equipe pode alterar as opções para realizar
